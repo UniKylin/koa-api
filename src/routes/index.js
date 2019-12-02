@@ -6,6 +6,20 @@ router.get('/', async (ctx, next) => {
     msg: 'hi koa2 ejs...',
     name: 'James Gosling',
     isMe: true,
+    blogs: [
+      {
+        id: 1, 
+        title: 'koa2项目实战'
+      },
+      {
+        id: 2,
+        title: 'Node.js监控实战'
+      },
+      {
+        id: 3,
+        title: 'SSR从入门到放弃'
+      }
+    ]
   })
 })
 

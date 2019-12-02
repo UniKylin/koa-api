@@ -9,10 +9,15 @@
     <p>EJS Welcome to <%= title %></p>
     <h1><%= msg %></h1>
 
-    <% if (isMe) { %>
-      <h1><%= locals.name %></h1>
-    <% } else { %>
-      <h1>Not me</h1>
-    <% } %>
+    <hr />
+    <%- include('./widget/user-info', {
+      isMe
+    })%>
+
+    <hr>
+    <%- include('./widget/blogs', {
+      blogs,
+    })%>
+
   </body>
 </html>
