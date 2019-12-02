@@ -1,4 +1,4 @@
-const { list, create } = require('../service/SchoolService')
+const { list, create, edit } = require('../service/SchoolService')
 
 async function getSchoolList() {
   const result = await list()
@@ -11,7 +11,14 @@ async function addSchool({ name, avatar, description }) {
   return result
 }
 
+async function editSchool({ id, name, avatar, description, remove }) {
+  const result = await edit({ id, name, avatar, description, remove })
+  console.log(`===> controller edit school: ${result}`)
+  return result
+}
+
 module.exports = {
   getSchoolList,
   addSchool,
+  editSchool,
 }

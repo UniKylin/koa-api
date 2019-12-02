@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 router.prefix('/api/school')
 
-const { getSchoolList, addSchool } = require('../controller/SchoolController')
+const { getSchoolList, addSchool, editSchool } = require('../controller/SchoolController')
 
 router.get('/list', async (ctx) => {
   try {
@@ -33,6 +33,24 @@ router.post('/add', async (ctx) => {
     ctx.body = {
       code: -1,
       message: '创建学校失败',
+    }
+  }
+})
+
+router.put('/edit', async (ctx) => {
+  const { name, avatar, description, remove, id } = ctx.request.body
+  console.log(`===> route id: ${id} name: ${name} avatar: ${avatar} description: ${description}`)
+  try {
+    const editResult = await editSchool({ id, name, avatar, remove, description })
+    ctx.body = {
+      code: 0,
+      data: editResult,
+    }
+  } catch (error) {
+    console.log(error)
+    ctx.body = {
+      code: -1,
+      message: '编辑学校失败',
     }
   }
 })
