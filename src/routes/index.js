@@ -6,8 +6,33 @@ router.get('/', async (ctx, next) => {
   })
 })
 
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
+// 测试获取 query params
+router.get('/profile/:userName', async (ctx, next) => {
+  const { userName } = ctx.params
+  ctx.body = {
+    userName,
+  }
+})
+
+// 测试多参数获取
+router.get('/profile/:userName/:page', async (ctx, next) => {
+  const { userName, page } = ctx.params
+  ctx.body = {
+    userName,
+    page,
+  }
+})
+
+router.post('/login', async (ctx) => {
+  const { username, password } = ctx.request.body
+  ctx.body = {
+    code: 0,
+    data: {
+      username,
+      password,
+      city: '上海'
+    }
+  }
 })
 
 router.get('/json', async (ctx, next) => {
