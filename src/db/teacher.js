@@ -21,7 +21,7 @@ const Teacher = Conn.define('teacher', {
 
   /**
    * 所有数据不能物理删除 !!!
-   * 0: 正常  1: 删除
+   * 0: 正常  -1: 删除
    */ 
   remove: {
     type: Sequelize.INTEGER,
