@@ -19,6 +19,12 @@ const Section = Conn.define('section', {
     type: Sequelize.STRING,
   },
 
+  // 0:视频课 1:音频课
+  type: {
+    type: Sequelize.STRING,
+    defaultValue: 0,
+  },
+
   // 课程 id
   courseId: {
     type: Sequelize.STRING,

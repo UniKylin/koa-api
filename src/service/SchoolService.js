@@ -22,8 +22,6 @@ async function edit({ id, name, avatar, remove, description }) {
   return result[0] > -1 ? true : false
 }
 
-
-
 module.exports = {
   list,
   edit,

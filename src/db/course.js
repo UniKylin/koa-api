@@ -14,12 +14,6 @@ const Course = Conn.define('course', {
     allowNull: false,
   },
 
-  // 0:视频课 1:音频课
-  type: {
-    type: Sequelize.STRING,
-    defaultValue: 0,
-  },
-
   // 备注
   remark: {
     type: Sequelize.STRING,
