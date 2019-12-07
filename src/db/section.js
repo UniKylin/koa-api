@@ -14,6 +14,12 @@ const Section = Conn.define('section', {
     allowNull: false,
   },
 
+  // 试看标志 0: 不可以试看  1: 可以试看
+  preview: {
+    type: Sequelize.STRING,
+    defaultValue: 0,
+  },
+
   // 备注
   remark: {
     type: Sequelize.STRING,

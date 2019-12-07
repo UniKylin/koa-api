@@ -1,6 +1,6 @@
 const conn = require('./conn')
 
-require('./index')
+require('./section')
 
 conn.sync({ force: true })
   .then(res => {

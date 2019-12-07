@@ -10,6 +10,7 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const school = require('./routes/school')
 const course = require('./routes/course')
+const section = require('./routes/section')
 
 // error handler
 onerror(app)
@@ -39,6 +40,7 @@ app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(school.routes(), school.allowedMethods())
 app.use(course.routes(), course.allowedMethods())
+app.use(section.routes(), section.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
