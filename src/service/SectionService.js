@@ -4,19 +4,19 @@ async function list(courseId) {
   const result = await SectionModel.findAndCountAll({
     where: { courseId }
   })
-  console.log(`===> service section list: ${JSON.stringify(result)}`)
+  // console.log(`===> service section list: ${JSON.stringify(result)}`)
   return result
 }
 
-async function create({ title, sourceUrl, remark, type, courseId }) {
-  const result = await SectionModel.create({ title, sourceUrl, remark, type, courseId })
+async function create({ title, sourceUrl, remark, type, courseId, preview }) {
+  const result = await SectionModel.create({ title, sourceUrl, remark, type, courseId, preview })
   console.log(`===> service create section: ${result}`)
   return result 
 }
 
-async function edit({ id, title, sourceUrl, remark, type, courseId, remove }) {
+async function edit({ id, title, sourceUrl, remark, type, courseId, remove, preview }) {
   const result = await SectionModel.update({ 
-    id, title, sourceUrl, remark, type, courseId, remove
+    id, title, sourceUrl, remark, type, courseId, remove, preview,
   }, {
     where: { id },
   })

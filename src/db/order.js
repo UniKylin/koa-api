@@ -6,7 +6,7 @@ const Conn = require('./conn')
  */
 const Order = Conn.define('order', {
   
-  // 用户 id
+  // 用户 id，其实就是用户 openId
   userId: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -19,7 +19,7 @@ const Order = Conn.define('order', {
   },
 
   /**
-   * 单独购买: 0
+   * 单独购买: 0 默认
    * 拼单购买: 1
    */
   buyType: {

@@ -11,6 +11,7 @@ const users = require('./routes/users')
 const school = require('./routes/school')
 const course = require('./routes/course')
 const section = require('./routes/section')
+const order = require('./routes/order')
 
 // error handler
 onerror(app)
@@ -41,6 +42,7 @@ app.use(users.routes(), users.allowedMethods())
 app.use(school.routes(), school.allowedMethods())
 app.use(course.routes(), course.allowedMethods())
 app.use(section.routes(), section.allowedMethods())
+app.use(order.routes(), order.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

@@ -4,10 +4,10 @@ router.prefix('/api/section')
 const { getSectionList, addSection, editSection } = require('../controller/SectionController')
 
 router.post('/add', async (ctx) => {
-  const { title, sourceUrl, remark, type, courseId } = ctx.request.body
+  const { title, sourceUrl, remark, type, courseId, preview } = ctx.request.body
   console.log(`section router: ${JSON.stringify(ctx.request.body)}`)
   try {
-    const addResult = await addSection({ title, sourceUrl, remark, type, courseId })
+    const addResult = await addSection({ title, sourceUrl, remark, type, courseId, preview })
     ctx.body = {
       code: 0,
       data: addResult
@@ -26,10 +26,10 @@ router.post('/add', async (ctx) => {
  * 2. 可以修改 `preview` 字段设置为可以预览课程
  */
 router.put('/edit', async (ctx) => {
-  const { id, title, sourceUrl, remark, type, courseId, remove } = ctx.request.body
+  const { id, title, sourceUrl, remark, type, courseId, remove, preview } = ctx.request.body
   console.log(`===> section edit route: ${JSON.stringify(ctx.request.body)}`)
   try {
-    const editResult = await editSection({ id, title, sourceUrl, remark, type, courseId, remove })
+    const editResult = await editSection({ id, title, sourceUrl, remark, type, courseId, remove, preview })
     ctx.body = {
       code: 0,
       data: editResult,
@@ -47,10 +47,11 @@ router.put('/edit', async (ctx) => {
  *  已经购买了返回观看课程地址的列表(字段 sourceUrl) 
  */
 router.get('/all_list', async (ctx) => {
-  const { courseId } = ctx.request.query
+  const { courseId, openId } = ctx.request.query
   console.log(`courseId => ${courseId}`)
   try {
-    let sectionList = await getSectionList(courseId)
+    let sectionList = await getSectionList({ openId, courseId })
+    console.log(`---------> section router: ${JSON.stringify(sectionList)}`)
     ctx.body = {
       code: 0,
       data: sectionList,
